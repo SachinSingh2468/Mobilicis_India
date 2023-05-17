@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'WRITE_YOUR_BUILD_COMMANDS'  // Replace with your actual build commands that are required to build any application
+            }
+        }
+
+        stage('Deploy') {
+            environment {
+                AWS_DEFAULT_REGION = 'WRITE_YOUR_AWS_REGION'  // Replace with you AWS region that you want to use
+            }
+            steps {
+                sh 'WRITE_YOUR_DEPLOYMENT_COMMANDS'  // you can write commands for the deployment
+            }
+        }
+    }
+}
